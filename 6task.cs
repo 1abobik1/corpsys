@@ -1,3 +1,9 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
       int D = 5; // для примера
       int K = 3; // для примера 
       int[] A = { 2, 4, 6, 8, 10, 12, 14, 16, 18 };
@@ -26,3 +32,5 @@
       {
           Console.WriteLine(num);
       }
+    }
+}
