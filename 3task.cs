@@ -4,7 +4,7 @@ class Program
 {
     static void Main()
     {
-      int L = 3; // Замените L на нужное целое число
+      int L = 3; // можно любое другое число..
       string[] A = { "Apple", "123abc", "45defg", "Xyz987" };
     
       string result = "Not found";
