@@ -1,4 +1,9 @@
+using System;
 
+class Program
+{
+    static void Main()
+    {
       int K = 2; // можно любое другое число..
       string[] A = { "ABC123", "DEF456", "GHI789", "JKL", "MNOXYZ", "PQR123", "STU" };
       
@@ -33,3 +38,5 @@
       {
           Console.WriteLine(str);
       }
+    }
+}
