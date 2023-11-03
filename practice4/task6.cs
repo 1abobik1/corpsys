@@ -1,36 +1,27 @@
+
 using System;
+using System.Linq;
 
 class Program
 {
     static void Main()
     {
-      int D = 5; // для примера
-      int K = 3; // для примера 
-      int[] A = { 2, 4, 6, 8, 10, 12, 14, 16, 18 };
-      
-      List<int> union = new List<int>();
-      HashSet<int> uniqueValues = new HashSet<int>();
-      
-      for (int i = 0; i < A.Length; i++)
-      {
-          if (A[i] >= D)
-          {
-              break;
-          }
-          uniqueValues.Add(A[i]);
-      }
-      
-      for (int i = K - 1; i < A.Length; i++)
-      {
-          uniqueValues.Add(A[i]);
-      }
-      
-      union.AddRange(uniqueValues);
-      union.Sort((a, b) => b.CompareTo(a));
-      
-      foreach (int num in union)
-      {
-          Console.WriteLine(num);
-      }
+        int[] sequence = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        int D = 4; // Заданное число D
+        int K = 6; // Заданное число K
+
+        var firstFragment = sequence.TakeWhile(x => x < D); // Выбираем элементы до первого элемента, большего D
+        var secondFragment = sequence.Skip(K - 1); // Пропускаем первые K - 1 элементов
+
+        var union = firstFragment.Union(secondFragment).OrderByDescending(x => x);
+
+        if (union.Any())
+        {
+            Console.WriteLine("Union of two fragments: " + string.Join(", ", union));
+        }
+        else
+        {
+            Console.WriteLine("No matching elements found.");
+        }
     }
 }
