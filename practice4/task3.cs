@@ -1,24 +1,19 @@
+
 using System;
+using System.Linq;
 
 class Program
 {
     static void Main()
     {
-      int L = 3; // можно любое другое число..
-      string[] A = { "Apple", "123abc", "45defg", "Xyz987" };
-    
-      string result = "Not found";
-      
-      for (int i = A.Length - 1; i >= 0; i--)
-      {
-          if (A[i].Length == L && Char.IsDigit(A[i][0]))
-          {
-              result = A[i];
-              break;
-          }
-      }
-      
-      Console.WriteLine(result);
+        string[] sequence = { "123abc", "45xyz", "789def", "abc123", "xyz45" };
+        int requiredLength = 3; // Заданная длина L
 
+        string result = sequence.LastOrDefault(s => s.Length == requiredLength && char.IsDigit(s[0]));
+
+        if (result != null)
+            Console.WriteLine("Last string starting with a digit and having length " + requiredLength + ": " + result);
+        else
+            Console.WriteLine("Not found.");
     }
 }
