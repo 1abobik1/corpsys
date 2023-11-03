@@ -1,35 +1,27 @@
 using System;
+using System.Linq;
+
 
 class Program
 {
     static void Main()
     {
-      int D = 5; // можно любое другое число..
-      int[] A = { 2, 7, 4, 9, 12, 6, 15, 8 };
-      
-      List<int> result = new List<int>();
-      
-      bool foundGreaterD = false;
-      
-      for (int i = 0; i < A.Length; i++)
-      {
-          if (A[i] > D)
-          {
-              foundGreaterD = true;
-          }
-      
-          if (foundGreaterD && A[i] % 2 != 0 && A[i] > 0)
-          {
-              result.Add(A[i]);
-          }
-      }
-      
-      result.Reverse();
-      
-      foreach (int num in result)
-      {
-          Console.WriteLine(num);
-      }
+        string[] sequence = { "Apple", "Banana", "Carrot", "Dog", "Elephant", "Fish", "Giraffe" };
+        int K = 4; // Заданное число K
 
+        var extractedStrings = sequence
+            .TakeWhile((str, index) => index < K) // Извлекаем строки до элемента с порядковым номером K
+            .Where(str => str.Length % 2 != 0 && char.IsUpper(str[0])) // Фильтруем строки с нечетной длиной и заглавной буквой
+            .Reverse(); // Меняем порядок извлеченных строк на обратный
+
+        if (extractedStrings.Any())
+        {
+            Console.WriteLine("Extracted strings: " + string.Join(", ", extractedStrings));
+        }
+        else
+        {
+            Console.WriteLine("No matching strings found.");
+        }
     }
 }
+
