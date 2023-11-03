@@ -1,34 +1,27 @@
 using System;
+using System.Linq;
+
 
 class Program
 {
     static void Main()
     {
-        int D = 5; // можно любое другое число..
-        int[] A = { 2, 7, 4, 9, 12, 6, 15, 8 };
-        
-        List<int> result = new List<int>();
-        
-        bool foundGreaterD = false;
-        
-        for (int i = 0; i < A.Length; i++)
+        int[] sequence = { 2, 5, 8, 3, 9, 4, 7, 1 };
+        int D = 4; // Заданное число D
+
+        var extractedNumbers = sequence
+            .SkipWhile(x => x <= D) // Пропускаем элементы, меньшие или равные D
+            .Where(x => x > 0 && x % 2 != 0) // Фильтруем нечетные положительные числа
+            .Reverse(); // Меняем порядок извлеченных чисел на обратный
+
+        if (extractedNumbers.Any())
         {
-            if (A[i] > D)
-            {
-                foundGreaterD = true;
-            }
-        
-            if (foundGreaterD && A[i] % 2 != 0 && A[i] > 0)
-            {
-                result.Add(A[i]);
-            }
+            Console.WriteLine("Extracted numbers: " + string.Join(", ", extractedNumbers));
         }
-        
-        result.Reverse();
-        
-        foreach (int num in result)
+        else
         {
-            Console.WriteLine(num);
+            Console.WriteLine("No matching numbers found.");
         }
     }
 }
+
